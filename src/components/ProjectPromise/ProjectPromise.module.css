@@ -1,0 +1,121 @@
+.promise {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(560px, 78vh, 760px);
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+  color: var(--text-light);
+  background: var(--bg-dark);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 60%;
+  filter: saturate(0.88) contrast(1.04) brightness(0.96) sepia(0.1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(14, 18, 15, 0.78) 0%,
+      rgba(14, 18, 15, 0.55) 42%,
+      rgba(14, 18, 15, 0.22) 70%,
+      rgba(14, 18, 15, 0.32) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(12, 15, 12, 0.5),
+      transparent 45%
+    );
+}
+
+.content {
+  width: 100%;
+}
+
+.heading {
+  margin-top: 1.4rem;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1.03;
+  max-width: 14ch;
+  text-wrap: balance;
+}
+
+.heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: #e6d3ab;
+}
+
+/* Local lead for the cinematic panel — ivory muted, controlled length */
+.lead {
+  margin-top: 1.4rem;
+  max-width: 52ch;
+  font-size: clamp(1.02rem, 1.35vw, 1.22rem);
+  line-height: 1.75;
+  color: var(--text-light-muted);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 0.9rem;
+  margin-top: 1.8rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border-light);
+  max-width: 560px;
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-light-muted);
+}
+
+.dot {
+  color: var(--accent);
+}
+
+/* Tablet: keep the visual balanced, text comfortably left */
+@media (max-width: 900px) {
+  .promise {
+    min-height: clamp(520px, 72vh, 640px);
+  }
+
+  .overlay {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(14, 18, 15, 0.62),
+        rgba(14, 18, 15, 0.55) 45%,
+        rgba(14, 18, 15, 0.72)
+      );
+  }
+}
+
+/* Mobile: readable overlay text, reduced height */
+@media (max-width: 600px) {
+  .promise {
+    min-height: 540px;
+    align-items: flex-end;
+    padding-block: 3.5rem;
+  }
+
+  .heading {
+    font-size: clamp(2.1rem, 9vw, 2.8rem);
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+}

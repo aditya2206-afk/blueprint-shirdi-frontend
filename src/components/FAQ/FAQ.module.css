@@ -1,0 +1,123 @@
+.faq {
+  padding-block: calc(var(--section-space) * 0.9);
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border-soft);
+}
+
+.head {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2.2rem;
+}
+
+.heading {
+  font-size: clamp(2.1rem, 4vw, 3.5rem);
+  line-height: 1.06;
+}
+
+.heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-deep);
+}
+
+.lead {
+  max-width: 56ch;
+}
+
+/* Editorial accordion: thin dividers, no cards */
+.list {
+  border-top: 1px solid var(--border);
+}
+
+.item {
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.qWrap {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+  width: 100%;
+  min-height: 64px;
+  padding: 1.3rem 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.question:hover {
+  color: var(--accent-deep);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  color: var(--accent-deep);
+  background: var(--bg);
+  transition: transform 0.4s var(--ease), background 0.35s var(--ease),
+    color 0.35s var(--ease);
+}
+
+.icon[data-open="true"] {
+  transform: rotate(45deg);
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--text-light);
+}
+
+.answerWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.45s var(--ease), opacity 0.4s var(--ease);
+}
+
+.answerWrap[data-open="true"] {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.answer {
+  overflow: hidden;
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 62ch;
+  padding-bottom: 0;
+}
+
+.answerWrap[data-open="true"] .answer {
+  padding-bottom: 1.6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .answerWrap,
+  .icon {
+    transition: none;
+  }
+}

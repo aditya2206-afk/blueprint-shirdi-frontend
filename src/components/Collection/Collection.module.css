@@ -1,0 +1,76 @@
+.collection {
+  /* Comfortable breathing room after the hero — not a void */
+  padding-block: clamp(3.5rem, 6vw, 5.5rem) calc(var(--section-space) * 0.7);
+  background: var(--bg);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.6rem;
+  align-items: start;
+}
+
+.copy {
+  max-width: 600px;
+  padding-top: 0.4rem;
+}
+
+.heading {
+  margin-top: 1.4rem;
+  font-size: clamp(2.15rem, 3.9vw, 3.4rem);
+  line-height: 1.08;
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
+.heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-deep);
+}
+
+.lead {
+  margin-top: 1.4rem;
+  max-width: 52ch;
+}
+
+.figure {
+  margin: 0;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-soft);
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Desktop: ~58% text / ~42% image editorial split */
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: 1.35fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+
+  .copy {
+    max-width: 640px;
+  }
+
+  .image {
+    aspect-ratio: 3 / 3.7;
+  }
+}

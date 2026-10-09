@@ -1,0 +1,90 @@
+.developer {
+  padding-block: calc(var(--section-space) * 0.9);
+  background: var(--bg);
+  border-top: 1px solid var(--border-soft);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.6rem;
+  align-items: center;
+}
+
+.copy {
+  max-width: 600px;
+  order: 1;
+}
+
+.heading {
+  margin-top: 1.4rem;
+  font-size: clamp(2.1rem, 4vw, 3.5rem);
+  line-height: 1.07;
+  max-width: 14ch;
+  text-wrap: balance;
+}
+
+.heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-deep);
+}
+
+.lead {
+  margin-top: 1.4rem;
+  max-width: 52ch;
+}
+
+.note {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-soft);
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.figure {
+  margin: 0;
+  order: 2;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 4.6;
+  object-fit: cover;
+  filter: saturate(0.88) contrast(1.03) brightness(1) sepia(0.1);
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-soft);
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Desktop: text left, image right — rhythm break after full-bleed Promise */
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(3rem, 6vw, 5.5rem);
+  }
+
+  .image {
+    aspect-ratio: 3 / 3.5;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .image {
+    aspect-ratio: 16 / 11;
+  }
+}

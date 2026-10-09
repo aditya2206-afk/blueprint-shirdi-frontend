@@ -1,0 +1,202 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--text-light);
+  background: var(--bg-dark);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Anchor offset so the fixed header never covers section headings.
+   (Global rule lives in globals.css — CSS Modules cannot emit bare
+   element selectors from here.) */
+
+/* Background media */
+.media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center 62%;
+  transform: scale(1.04);
+  animation: heroSettle 2.4s var(--ease) forwards;
+  /* Tame the bright/blue placeholder toward a warm dusk grade */
+  filter: saturate(0.82) contrast(1.04) brightness(0.94) sepia(0.14);
+}
+
+@keyframes heroSettle {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1.04);
+  }
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(14, 17, 13, 0.62) 0%,
+      rgba(20, 24, 18, 0.22) 26%,
+      rgba(24, 22, 15, 0.16) 48%,
+      rgba(16, 15, 10, 0.68) 82%,
+      rgba(12, 12, 8, 0.82) 100%
+    ),
+    linear-gradient(
+      100deg,
+      rgba(30, 24, 14, 0.42) 0%,
+      transparent 45%,
+      rgba(10, 13, 11, 0.3) 100%
+    ),
+    radial-gradient(
+      120% 90% at 20% 100%,
+      rgba(14, 13, 9, 0.5),
+      transparent 60%
+    );
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ---------- Content ---------- */
+.content {
+  width: min(92%, var(--container));
+  margin-inline: auto;
+  /* Balanced vertical rhythm: clear of the header, resting above the meta */
+  padding-top: calc(var(--header-h) + clamp(2rem, 6vh, 4rem));
+  padding-bottom: clamp(1.6rem, 3.5vh, 2.6rem);
+  max-width: var(--container);
+}
+
+.eyebrow {
+  margin-bottom: 1.1rem;
+}
+
+.title {
+  /* ~12% smaller than the previous --h1: still cinematic, no longer
+     swallowing the viewport on 1280–1600px screens */
+  font-size: clamp(2.8rem, 7.2vw, 6.6rem);
+  text-transform: uppercase;
+  max-width: 12ch;
+  line-height: 1.04;
+}
+
+.title em {
+  font-style: italic;
+  font-weight: 400;
+  color: #f0e4cf;
+}
+
+.sub {
+  margin-top: 1.3rem;
+  max-width: 52ch;
+  font-size: clamp(1rem, 1.3vw, 1.18rem);
+  line-height: 1.7;
+  color: var(--text-light-muted);
+}
+
+.ctaRow {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+/* Bottom meta strip */
+.footer {
+  width: min(92%, var(--container));
+  margin-inline: auto;
+  padding-block: 1.6rem 2rem;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 0.9rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-light-muted);
+}
+
+.scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.76rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  opacity: 0.85;
+}
+
+.scroll svg {
+  animation: bob 2.2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Mobile: keep headings large but safe, stack CTAs full-width */
+@media (max-width: 600px) {
+  .content {
+    padding-bottom: 1.8rem;
+  }
+  .sub {
+    font-size: 1.02rem;
+  }
+  .ctaRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ctaRow :global(.btn) {
+    width: 100%;
+  }
+  .scroll {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image {
+    animation: none;
+    transform: none;
+  }
+  .scroll svg {
+    animation: none;
+  }
+}

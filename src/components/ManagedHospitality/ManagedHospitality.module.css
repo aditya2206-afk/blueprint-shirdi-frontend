@@ -1,0 +1,125 @@
+.hospitality {
+  padding-block: calc(var(--section-space) * 0.9);
+  background: var(--bg-soft);
+  border-top: 1px solid var(--border-soft);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.6rem;
+  align-items: center;
+}
+
+.copy {
+  max-width: 640px;
+  order: 1;
+}
+
+.heading {
+  margin-top: 1.4rem;
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  line-height: 1.07;
+  max-width: 15ch;
+  text-wrap: balance;
+}
+
+.heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-deep);
+}
+
+.lead {
+  margin-top: 1.4rem;
+  max-width: 54ch;
+}
+
+/* Sophisticated service list: 2-column thin-divider rows, never cards */
+.services {
+  list-style: none;
+  margin: 1.8rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--border-soft);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.service {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding-block: 0.85rem;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: var(--accent-deep);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.figure {
+  margin: 0;
+  order: 2;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(0.9) contrast(1.03) brightness(1) sepia(0.1);
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-soft);
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Desktop: 55% content + services, 45% image */
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+
+  .services {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2.2rem;
+  }
+
+  .image {
+    aspect-ratio: 3 / 3.7;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .services {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+  }
+
+  .image {
+    aspect-ratio: 16 / 11;
+  }
+}

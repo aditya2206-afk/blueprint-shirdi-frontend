@@ -1,0 +1,136 @@
+.retreat {
+  padding-block: calc(var(--section-space) * 0.9);
+  background: var(--bg-dark);
+  color: var(--text-light);
+  border-top: 1px solid var(--border-soft);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.6rem;
+  align-items: center;
+}
+
+.copy {
+  max-width: 600px;
+  order: 1;
+}
+
+.heading {
+  margin-top: 1.4rem;
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+  line-height: 1.06;
+  max-width: 14ch;
+  text-wrap: balance;
+}
+
+.heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: #e6d3ab;
+}
+
+/* Local lead treatment for the dark panel — readable, muted ivory */
+.lead {
+  margin-top: 1.4rem;
+  max-width: 52ch;
+  font-size: clamp(1.02rem, 1.3vw, 1.2rem);
+  line-height: 1.75;
+  color: var(--text-light-muted);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 0.9rem;
+  margin-top: 1.7rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.76rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-light-muted);
+}
+
+.dot {
+  color: var(--accent);
+}
+
+/* Light text-link variant tuned for the dark panel */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 2.2rem;
+  padding-bottom: 0.55rem;
+  min-height: 48px;
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--accent);
+  transition: color 0.35s var(--ease), border-color 0.35s var(--ease),
+    gap 0.35s var(--ease);
+}
+
+.cta svg {
+  width: 17px;
+  height: 17px;
+  transition: transform 0.35s var(--ease);
+}
+
+.cta:hover {
+  color: #e6d3ab;
+  border-color: #e6d3ab;
+}
+
+.cta:hover svg {
+  transform: translateX(5px);
+}
+
+.figure {
+  margin: 0;
+  order: 2;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 4.2;
+  object-fit: cover;
+  filter: saturate(0.92) contrast(1.04) brightness(1) sepia(0.08);
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-light-muted);
+}
+
+/* Desktop: 45% dark text panel, 55% image */
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: 0.85fr 1.05fr;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+
+  .image {
+    aspect-ratio: 4 / 3.6;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 959px) {
+  .image {
+    aspect-ratio: 16 / 11;
+  }
+}
